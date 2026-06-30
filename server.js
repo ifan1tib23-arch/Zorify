@@ -285,6 +285,10 @@ const server = http.createServer((req, res) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zorify Web Player • Premium Music Experience</title>
+    <!-- Google Fonts - Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -304,7 +308,7 @@ const server = http.createServer((req, res) => {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             scrollbar-width: thin;
             scrollbar-color: var(--bg-hover-grey) transparent;
         }
@@ -608,11 +612,78 @@ const server = http.createServer((req, res) => {
         }
 
         /* --- HOME SECTION --- */
+        .mobile-greeting-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            width: 100%;
+        }
+
+        .greeting-text-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
         .home-greeting {
             font-size: 32px;
             font-weight: 800;
-            margin-bottom: 24px;
             letter-spacing: -1px;
+            margin-bottom: 0;
+        }
+
+        .home-subgreeting {
+            font-size: 14px;
+            color: var(--text-grey);
+            font-weight: 500;
+        }
+
+        .mobile-greeting-header .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-action-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: var(--text-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .header-action-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .header-profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: black;
+            cursor: pointer;
+            background-color: var(--spotify-green);
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* On desktop, hide header actions inside mobile-greeting-header as they are in top main-header */
+        @media (min-width: 769px) {
+            .mobile-greeting-header .header-actions {
+                display: none !important;
+            }
         }
 
         .quick-grid {
@@ -1436,7 +1507,7 @@ const server = http.createServer((req, res) => {
         /* Responsive Mobile Bottom Navigation & Adaptive Design */
         @media (max-width: 768px) {
             body {
-                background: linear-gradient(to bottom, #0F3E2F 0%, #121212 100%) !important;
+                background: linear-gradient(to bottom, #072a1e 0%, #121212 100%) !important;
             }
 
             .app-container {
@@ -1449,7 +1520,7 @@ const server = http.createServer((req, res) => {
                 width: 100% !important;
                 height: 64px !important;
                 flex-direction: row !important;
-                padding: 4px !important;
+                padding: 0 !important;
                 justify-content: space-around !important;
                 background-color: #0c0c0c !important;
                 border-top: 1px solid #1a1a1a !important;
@@ -1480,18 +1551,29 @@ const server = http.createServer((req, res) => {
                 gap: 4px !important;
                 color: var(--text-grey) !important;
                 text-decoration: none !important;
-                font-size: 10px !important;
-                font-weight: 700 !important;
+                font-size: 11px !important;
+                font-weight: 500 !important;
                 flex: 1 !important;
                 justify-content: center !important;
                 cursor: pointer !important;
+                padding: 6px 0 !important;
+                transition: color 0.2s ease !important;
             }
 
             .mobile-nav-item i {
                 font-size: 18px !important;
+                padding: 4px 16px !important;
+                border-radius: 16px !important;
+                transition: background-color 0.2s ease, color 0.2s ease !important;
             }
 
             .mobile-nav-item.active {
+                color: var(--spotify-green) !important;
+                font-weight: 700 !important;
+            }
+
+            .mobile-nav-item.active i {
+                background-color: rgba(29, 185, 84, 0.15) !important;
                 color: var(--spotify-green) !important;
             }
 
@@ -1499,61 +1581,123 @@ const server = http.createServer((req, res) => {
                 margin: 0 !important;
                 border-radius: 0 !important;
                 background: transparent !important;
-                height: calc(100vh - 64px - 85px) !important;
+                height: calc(100vh - 64px - 72px) !important;
                 overflow-y: auto !important;
                 padding-bottom: 24px !important;
             }
 
             .main-header {
-                padding: 16px !important;
-                background-color: transparent !important;
-                border: none !important;
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-            }
-
-            .main-header .nav-arrows {
-                display: none !important;
+                display: none !important; /* Hide standard desktop main header on mobile to get rid of bulky buttons */
             }
 
             .main-content {
-                padding: 0 16px 80px 16px !important;
+                padding: 16px 16px 100px 16px !important;
             }
 
+            /* Bottom Player Bar - Native Android Floating Pill Style */
             .bottom-player-bar {
-                height: 80px !important;
+                height: 64px !important;
                 position: fixed !important;
-                bottom: 64px !important;
-                left: 0 !important;
-                width: 100% !important;
+                bottom: 72px !important; /* sits beautifully above bottom nav */
+                left: 8px !important;
+                right: 8px !important;
+                width: calc(100% - 16px) !important;
                 background-color: #121212 !important;
-                border-top: 1px solid #1c1c1c !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                border-radius: 12px !important;
                 z-index: 998 !important;
                 padding: 0 12px !important;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
             }
 
             .player-track-info {
-                width: 45% !important;
-                gap: 8px !important;
+                width: 65% !important;
+                gap: 10px !important;
+                display: flex !important;
+                align-items: center !important;
             }
 
             .player-track-info img {
-                width: 44px !important;
-                height: 44px !important;
-                border-radius: 4px !important;
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 6px !important;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
             }
 
-            .player-utilities {
+            .player-track-details {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 1px !important;
+                min-width: 0 !important;
+                flex: 1 !important;
+            }
+
+            .player-track-title {
+                font-size: 13px !important;
+                font-weight: 700 !important;
+                color: white !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .player-track-artist {
+                font-size: 11px !important;
+                color: #b3b3b3 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .player-track-like-btn {
                 display: none !important;
             }
 
             .player-controls-container {
-                width: 55% !important;
+                width: 30% !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: flex-end !important;
+                align-items: center !important;
             }
 
-            .player-progress-area {
-                gap: 6px !important;
+            .progress-bar-container {
+                display: none !important;
+            }
+
+            .control-buttons {
+                display: flex !important;
+                align-items: center !important;
+                gap: 16px !important;
+            }
+
+            .control-buttons .control-btn {
+                display: none !important;
+            }
+
+            .control-buttons #ctrl-play-pause,
+            .control-buttons .control-btn:nth-child(4) {
+                display: flex !important;
+                background: transparent !important;
+                border: none !important;
+                color: white !important;
+                font-size: 18px !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 36px !important;
+                height: 36px !important;
+                cursor: pointer !important;
+            }
+
+            .control-buttons #ctrl-play-pause {
+                font-size: 20px !important;
+            }
+
+            .player-utilities {
+                display: none !important;
             }
 
             /* Song table styling adapted beautifully for Mobile standard list views */
@@ -1619,7 +1763,7 @@ const server = http.createServer((req, res) => {
             }
 
             .song-table td:nth-child(3) {
-                display: none !important; /* Hide redundant desktop-only artist col */
+                display: none !important; /* Hide redundant desktop artist col */
             }
 
             .song-details-artist-mobile {
@@ -1669,21 +1813,48 @@ const server = http.createServer((req, res) => {
                 border-radius: 6px !important;
                 background-color: rgba(255, 255, 255, 0.05) !important;
                 border: 1px solid rgba(255, 255, 255, 0.03) !important;
+                display: flex !important;
+                align-items: center !important;
+                overflow: hidden !important;
             }
 
             .quick-card img {
                 width: 56px !important;
                 height: 56px !important;
-                border-top-left-radius: 6px !important;
-                border-bottom-left-radius: 6px !important;
+                border-radius: 0 !important;
+                object-fit: cover !important;
+                flex-shrink: 0 !important;
+            }
+
+            .quick-card-details {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                padding: 0 10px !important;
+                flex: 1 !important;
+                min-width: 0 !important;
             }
 
             .quick-card-title {
                 font-size: 12px !important;
                 font-weight: bold !important;
+                color: white !important;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
+            }
+
+            .quick-card-artist {
+                font-size: 10px !important;
+                color: var(--text-grey) !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                margin-top: 2px !important;
+            }
+
+            .play-overlay-btn {
+                display: none !important;
             }
         }
 
@@ -1788,11 +1959,36 @@ const server = http.createServer((req, res) => {
             <div class="main-content">
                 <!-- 1. Home View -->
                 <section id="tab-home" class="tab-content">
-                    <h1 class="home-greeting" id="greeting-text">Selamat Datang</h1>
+                    <!-- Dynamic Header with Native Look and Feel on Mobile -->
+                    <div class="mobile-greeting-header">
+                        <div class="greeting-text-container">
+                            <h1 class="home-greeting" id="greeting-text">Selamat Datang</h1>
+                            <p class="home-subgreeting" id="subgreeting-text">Halo, Guest!</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="header-action-btn" onclick="switchTab('history')"><i class="fa-solid fa-clock-rotate-left"></i></button>
+                            <div class="header-profile-avatar" onclick="openAuthModal()" id="home-avatar">G</div>
+                        </div>
+                    </div>
                     
-                    <h2 class="section-title">Pemutaran Cepat</h2>
+                    <h2 class="section-title">Berdasarkan yang baru didengar</h2>
                     <div class="quick-grid" id="home-quick-grid">
                         <!-- Filled dynamically -->
+                    </div>
+
+                    <h2 class="section-title">Daftar Putar Anda</h2>
+                    <div class="empty-playlists-banner" style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; padding: 20px; font-size: 14px; color: var(--text-grey); margin-bottom: 24px; text-align: left; font-family: 'Plus Jakarta Sans', sans-serif;">
+                        Mulai buat daftar putarmu di tab Koleksi!
+                    </div>
+
+                    <h2 class="section-title">Direkomendasikan Untukmu</h2>
+                    <div class="recommendation-banner" style="display: flex; align-items: center; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; padding: 16px; margin-bottom: 24px; gap: 16px; cursor: pointer; transition: background-color 0.2s;" onclick="playDiscoverWeekly()">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=60" alt="Discover Weekly" style="width: 72px; height: 72px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 style="font-size: 15px; font-weight: 800; color: white;">Discover Weekly</h3>
+                            <p style="font-size: 12px; color: var(--text-grey); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Pilihan lagu segar terbaik disinkronkan otomatis sesuai seleramu.</p>
+                        </div>
+                        <button class="play-btn-circle" style="background-color: var(--spotify-green); border: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-size: 18px; cursor: pointer; box-shadow: 0 4px 10px rgba(29, 185, 84, 0.3); flex-shrink: 0;"><i class="fa-solid fa-play" style="margin-left: 2px;"></i></button>
                     </div>
 
                     <h2 class="section-title">Semua Musik Zorify</h2>
@@ -2079,10 +2275,10 @@ const server = http.createServer((req, res) => {
     <!-- --- MOBILE NAVIGATION TAB BAR (Shows on screens < 768px) --- -->
     <div class="sidebar d-none" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; z-index: 100; border-top: 1px solid #282828;">
         <div class="sidebar-panel">
-            <div class="mobile-nav-item active" id="mob-home" onclick="switchTab('home')"><i class="fa-solid fa-house"></i> Home</div>
-            <div class="mobile-nav-item" id="mob-search" onclick="switchTab('search')"><i class="fa-solid fa-magnifying-glass"></i> Cari</div>
-            <div class="mobile-nav-item" id="mob-liked" onclick="switchTab('liked')"><i class="fa-solid fa-heart"></i> Liked</div>
-            <div class="mobile-nav-item" id="mob-sync" onclick="switchTab('sync')"><i class="fa-solid fa-cloud-arrow-up"></i> Sync</div>
+            <div class="mobile-nav-item active" id="mob-home" onclick="switchTab('home')"><i class="fa-solid fa-house"></i><span>Home</span></div>
+            <div class="mobile-nav-item" id="mob-search" onclick="switchTab('search')"><i class="fa-solid fa-magnifying-glass"></i><span>Cari</span></div>
+            <div class="mobile-nav-item" id="mob-playlists" onclick="switchTab('playlists')"><i class="fa-solid fa-lines-leaning"></i><span>Koleksi</span></div>
+            <div class="mobile-nav-item" id="mob-sync" onclick="switchTab('sync')"><i class="fa-regular fa-user"></i><span>Akun</span></div>
         </div>
     </div>
 
@@ -2300,12 +2496,12 @@ const server = http.createServer((req, res) => {
             // Mobile tab highlighting
             const mobHome = document.getElementById('mob-home');
             const mobSearch = document.getElementById('mob-search');
-            const mobLiked = document.getElementById('mob-liked');
+            const mobPlaylists = document.getElementById('mob-playlists');
             const mobSync = document.getElementById('mob-sync');
 
             if (tabId === 'home' && mobHome) mobHome.classList.add('active');
             if (tabId === 'search' && mobSearch) mobSearch.classList.add('active');
-            if (tabId === 'liked' && mobLiked) mobLiked.classList.add('active');
+            if (tabId === 'playlists' && mobPlaylists) mobPlaylists.classList.add('active');
             if (tabId === 'sync' && mobSync) mobSync.classList.add('active');
         }
 
@@ -2357,16 +2553,29 @@ const server = http.createServer((req, res) => {
 
         function renderHeaderUser() {
             const profileHeader = document.getElementById('user-profile-header');
+            const subGreeting = document.getElementById('subgreeting-text');
+            const homeAvatar = document.getElementById('home-avatar');
+            
             if (localData.currentUser) {
                 profileHeader.innerHTML = \`
                     <div class="auth-avatar" style="background-color: \${localData.currentUser.avatarColorHex || '#1DB954'}">\${localData.currentUser.username[0].toUpperCase()}</div>
                     <span class="auth-username">\${localData.currentUser.username} (Keluar)</span>
                 \`;
+                if (subGreeting) subGreeting.innerText = \`Halo, \${localData.currentUser.username}!\`;
+                if (homeAvatar) {
+                    homeAvatar.innerText = localData.currentUser.username[0].toUpperCase();
+                    homeAvatar.style.backgroundColor = localData.currentUser.avatarColorHex || '#1DB954';
+                }
             } else {
                 profileHeader.innerHTML = \`
                     <div class="auth-avatar" style="background-color: var(--spotify-green)">G</div>
                     <span class="auth-username">Guest / Masuk</span>
                 \`;
+                if (subGreeting) subGreeting.innerText = "Halo, Guest!";
+                if (homeAvatar) {
+                    homeAvatar.innerText = "G";
+                    homeAvatar.style.backgroundColor = '#1DB954';
+                }
             }
         }
 
@@ -2740,6 +2949,15 @@ const server = http.createServer((req, res) => {
         }
 
         // --- PLAYBACK SYSTEM CONTROLS ---
+        function playDiscoverWeekly() {
+            const allSongs = getAllSongs();
+            if (allSongs.length > 0) {
+                const randomIndex = Math.floor(Math.random() * allSongs.length);
+                playSongDirectly(allSongs[randomIndex]);
+                alert("Memutar playlist Discover Weekly Anda!");
+            }
+        }
+
         function playSongDirectly(song) {
             // Check if song matches current song
             const playerTitle = document.getElementById('player-title');
