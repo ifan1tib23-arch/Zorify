@@ -1365,86 +1365,325 @@ const server = http.createServer((req, res) => {
             text-align: left;
         }
 
-        /* Responsive Mobile Bottom Navigation (Collapses sidebar on mobile) */
+        .d-none-desktop {
+            display: none !important;
+        }
+
+        /* Exclusive Web Auth Container (Guard) */
+        #web-auth-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100vw;
+            background: linear-gradient(to bottom, #0F3E2F 0%, #121212 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            padding: 24px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        body.not-logged-in #web-auth-container {
+            display: flex !important;
+        }
+
+        body.not-logged-in .app-container,
+        body.not-logged-in .bottom-player-bar,
+        body.not-logged-in .sidebar {
+            display: none !important;
+        }
+
+        .auth-card {
+            background-color: var(--bg-dark-grey);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            padding: 32px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .auth-logo {
+            font-size: 48px;
+            color: var(--spotify-green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 800;
+        }
+
+        .auth-logo i {
+            filter: drop-shadow(0 0 12px rgba(29, 185, 84, 0.4));
+        }
+
+        .auth-subtitle {
+            color: var(--text-grey);
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        /* Responsive Mobile Bottom Navigation & Adaptive Design */
         @media (max-width: 768px) {
+            body {
+                background: linear-gradient(to bottom, #0F3E2F 0%, #121212 100%) !important;
+            }
+
             .app-container {
                 flex-direction: column-reverse;
+                height: 100vh;
+                overflow: hidden;
             }
 
             .sidebar {
-                width: 100%;
-                height: 60px;
-                flex-direction: row;
-                padding: 4px;
-                justify-content: space-around;
-                background-color: var(--bg-black);
-                gap: 0;
+                width: 100% !important;
+                height: 64px !important;
+                flex-direction: row !important;
+                padding: 4px !important;
+                justify-content: space-around !important;
+                background-color: #0c0c0c !important;
+                border-top: 1px solid #1a1a1a !important;
+                gap: 0 !important;
+                z-index: 999 !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                display: flex !important;
             }
 
             .sidebar-panel {
-                background-color: transparent;
-                padding: 0;
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
+                background-color: transparent !important;
+                padding: 0 !important;
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-around !important;
             }
 
             .logo-container, .sidebar-library, .nav-menu {
-                display: none;
+                display: none !important;
             }
 
             .mobile-nav-item {
                 display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                gap: 4px;
-                color: var(--text-grey);
-                text-decoration: none;
-                font-size: 10px;
-                font-weight: 700;
-                flex: 1;
-                justify-content: center;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 4px !important;
+                color: var(--text-grey) !important;
+                text-decoration: none !important;
+                font-size: 10px !important;
+                font-weight: 700 !important;
+                flex: 1 !important;
+                justify-content: center !important;
+                cursor: pointer !important;
             }
 
             .mobile-nav-item i {
-                font-size: 18px;
+                font-size: 18px !important;
             }
 
             .mobile-nav-item.active {
-                color: var(--spotify-green);
+                color: var(--spotify-green) !important;
             }
 
             .main-viewport {
-                margin: 0;
-                border-radius: 0;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                background: transparent !important;
+                height: calc(100vh - 64px - 85px) !important;
+                overflow-y: auto !important;
+                padding-bottom: 24px !important;
             }
 
             .main-header {
-                padding: 0 16px;
+                padding: 16px !important;
+                background-color: transparent !important;
+                border: none !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+            }
+
+            .main-header .nav-arrows {
+                display: none !important;
             }
 
             .main-content {
-                padding: 16px;
+                padding: 0 16px 80px 16px !important;
             }
 
             .bottom-player-bar {
-                height: 80px;
+                height: 80px !important;
+                position: fixed !important;
+                bottom: 64px !important;
+                left: 0 !important;
+                width: 100% !important;
+                background-color: #121212 !important;
+                border-top: 1px solid #1c1c1c !important;
+                z-index: 998 !important;
+                padding: 0 12px !important;
             }
 
             .player-track-info {
-                width: 40%;
+                width: 45% !important;
+                gap: 8px !important;
+            }
+
+            .player-track-info img {
+                width: 44px !important;
+                height: 44px !important;
+                border-radius: 4px !important;
             }
 
             .player-utilities {
-                display: none;
+                display: none !important;
             }
 
             .player-controls-container {
-                width: 55%;
+                width: 55% !important;
             }
 
+            .player-progress-area {
+                gap: 6px !important;
+            }
+
+            /* Song table styling adapted beautifully for Mobile standard list views */
+            .song-table {
+                display: block !important;
+                width: 100% !important;
+                border-collapse: separate !important;
+                border-spacing: 0 !important;
+            }
+
+            .song-table thead {
+                display: none !important;
+            }
+
+            .song-table tbody {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+
+            .song-table tr {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                background-color: rgba(255, 255, 255, 0.03) !important;
+                padding: 10px 12px !important;
+                border-radius: 8px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            }
+
+            .song-table tr:hover {
+                background-color: rgba(255, 255, 255, 0.08) !important;
+            }
+
+            .song-table td {
+                padding: 0 !important;
+                border: none !important;
+                background: transparent !important;
+            }
+
+            .song-index {
+                display: none !important;
+            }
+
+            .song-table td.song-title-col {
+                flex: 1 !important;
+                min-width: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+                text-align: left !important;
+            }
+
+            .song-table td.song-title-col img {
+                width: 48px !important;
+                height: 48px !important;
+                border-radius: 6px !important;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+                flex-shrink: 0 !important;
+            }
+
+            .song-table td:nth-child(3) {
+                display: none !important; /* Hide redundant desktop-only artist col */
+            }
+
+            .song-details-artist-mobile {
+                display: block !important;
+                font-size: 11px !important;
+                color: #b3b3b3 !important;
+                font-weight: 400 !important;
+                margin-top: 3px !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            .song-liked-col, .song-actions-col {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 40px !important;
+                height: 40px !important;
+                cursor: pointer !important;
+            }
+
+            .song-liked-col i {
+                font-size: 16px !important;
+            }
+
+            .song-actions-col button {
+                background: none !important;
+                border: none !important;
+                color: var(--text-grey) !important;
+                font-size: 16px !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            /* Pemutaran Cepat Grid styling */
             .quick-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
+            }
+
+            .quick-card {
+                height: 56px !important;
+                border-radius: 6px !important;
+                background-color: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.03) !important;
+            }
+
+            .quick-card img {
+                width: 56px !important;
+                height: 56px !important;
+                border-top-left-radius: 6px !important;
+                border-bottom-left-radius: 6px !important;
+            }
+
+            .quick-card-title {
+                font-size: 12px !important;
+                font-weight: bold !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
             }
         }
 
@@ -1454,6 +1693,43 @@ const server = http.createServer((req, res) => {
     </style>
 </head>
 <body>
+
+    <!-- --- EXCLUSIVE WEB AUTH GUARD CONTAINER --- -->
+    <div id="web-auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <i class="fa-brands fa-spotify"></i>
+                <span>Zorify</span>
+            </div>
+            <h2 id="exc-auth-title" style="font-size: 22px; font-weight: 800; margin-bottom: 8px;">Masuk ke Zorify</h2>
+            <p class="auth-subtitle" id="exc-auth-subtitle">Gunakan akun Google atau Zorify Anda untuk masuk dan menyinkronkan daftar putar.</p>
+            
+            <div class="form-group" style="text-align: left; margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;">
+                <label class="form-label" style="font-size: 12px; color: var(--text-grey); font-weight: 600;">Username</label>
+                <input type="text" class="form-control" id="exc-auth-username" placeholder="Masukkan username Anda..." style="background-color: #242424; border: 1px solid #333; padding: 12px; border-radius: 8px; color: white; width: 100%;">
+            </div>
+            <div class="form-group" style="text-align: left; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+                <label class="form-label" style="font-size: 12px; color: var(--text-grey); font-weight: 600;">Password</label>
+                <input type="password" class="form-control" id="exc-auth-password" placeholder="Masukkan password..." style="background-color: #242424; border: 1px solid #333; padding: 12px; border-radius: 8px; color: white; width: 100%;">
+            </div>
+            
+            <button class="modal-btn" id="exc-auth-submit-btn" onclick="submitExclusiveAuthForm()" style="background-color: var(--spotify-green); color: black; font-weight: bold; padding: 14px; border-radius: 30px; border: none; cursor: pointer; transition: background-color 0.2s; font-size: 14px; letter-spacing: 1px; width: 100%;">MASUK</button>
+            
+            <div style="display: flex; align-items: center; margin: 12px 0;">
+                <hr style="flex: 1; border: none; border-top: 1px solid rgba(255,255,255,0.15);">
+                <span style="padding: 0 10px; color: #888; font-size: 11px; font-weight: bold;">ATAU</span>
+                <hr style="flex: 1; border: none; border-top: 1px solid rgba(255,255,255,0.15);">
+            </div>
+            
+            <button onclick="openGoogleChooser()" class="modal-btn" style="background-color: white; color: black; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 0; padding: 12px; font-size: 14px; border-radius: 30px; border: none; font-weight: bold; cursor: pointer; width: 100%;">
+                <span style="color: #4285F4; font-weight: 900; font-size: 18px; margin-right: 4px;">G</span> Masuk dengan Google
+            </button>
+            
+            <p class="modal-switch-mode" id="exc-auth-switch-prompt" style="font-size: 13px; color: var(--text-grey); margin-top: 16px;">
+                Belum punya akun? <span onclick="toggleExclusiveAuthMode(true)" style="color: var(--spotify-green); cursor: pointer; text-decoration: underline; font-weight: bold;">Daftar Gratis</span>
+            </p>
+        </div>
+    </div>
 
     <div class="app-container">
         <!-- --- SIDEBAR PANEL (Desktop Navigation) --- -->
@@ -2035,6 +2311,11 @@ const server = http.createServer((req, res) => {
 
         // --- DATA RENDERING FUNCTIONS ---
         function refreshAllUIs() {
+            if (!localData.currentUser) {
+                document.body.classList.add('not-logged-in');
+            } else {
+                document.body.classList.remove('not-logged-in');
+            }
             renderHeaderUser();
             renderHomeSongs();
             renderSearchSongs();
@@ -2042,6 +2323,36 @@ const server = http.createServer((req, res) => {
             renderPlaylists();
             renderHistorySongs();
             renderSyncStatus();
+        }
+
+        let isExcRegistering = false;
+        function toggleExclusiveAuthMode(reg) {
+            isExcRegistering = reg;
+            document.getElementById('exc-auth-title').innerText = reg ? "Daftar Akun Zorify" : "Masuk ke Zorify";
+            document.getElementById('exc-auth-submit-btn').innerText = reg ? "DAFTAR SEKARANG" : "MASUK";
+            document.getElementById('exc-auth-switch-prompt').innerHTML = reg ? 
+                "Sudah punya akun? <span onclick='toggleExclusiveAuthMode(false)' style='color: var(--spotify-green); cursor: pointer; text-decoration: underline; font-weight: bold;'>Masuk di sini</span>" :
+                "Belum punya akun? <span onclick='toggleExclusiveAuthMode(true)' style='color: var(--spotify-green); cursor: pointer; text-decoration: underline; font-weight: bold;'>Daftar Gratis</span>";
+        }
+
+        function submitExclusiveAuthForm() {
+            const user = document.getElementById('exc-auth-username').value.trim();
+            const pass = document.getElementById('exc-auth-password').value;
+
+            if (!user || !pass) {
+                alert("Harap isi semua kolom!");
+                return;
+            }
+
+            localData.currentUser = {
+                username: user,
+                avatarColorHex: "#1DB954",
+                lastSync: "Menghubungkan..."
+            };
+            saveData();
+            refreshAllUIs();
+            alert(isExcRegistering ? ("Pendaftaran berhasil! Anda masuk sebagai " + user) : ("Berhasil masuk sebagai " + user));
+            triggerSyncWithServer();
         }
 
         function renderHeaderUser() {
@@ -2098,6 +2409,7 @@ const server = http.createServer((req, res) => {
                         <img src="\${song.coverUrl}" alt="Cover">
                         <div class="song-details-mini">
                             <span class="song-details-title">\${song.title}</span>
+                            <span class="song-details-artist-mobile d-none-desktop">\${song.artist}</span>
                         </div>
                     </td>
                     <td>\${song.artist}</td>
@@ -2178,6 +2490,7 @@ const server = http.createServer((req, res) => {
                         <img src="\${song.coverUrl}" alt="Cover">
                         <div class="song-details-mini">
                             <span class="song-details-title">\${song.title}</span>
+                            <span class="song-details-artist-mobile d-none-desktop">\${song.artist}</span>
                         </div>
                     </td>
                     <td>\${song.artist}</td>
@@ -2256,6 +2569,7 @@ const server = http.createServer((req, res) => {
                         <img src="\${song.coverUrl}" alt="Cover">
                         <div class="song-details-mini">
                             <span class="song-details-title">\${song.title}</span>
+                            <span class="song-details-artist-mobile d-none-desktop">\${song.artist}</span>
                         </div>
                     </td>
                     <td>\${song.artist}</td>
@@ -2284,6 +2598,7 @@ const server = http.createServer((req, res) => {
                         <img src="\${song.coverUrl}" alt="Cover">
                         <div class="song-details-mini">
                             <span class="song-details-title">\${song.title}</span>
+                            <span class="song-details-artist-mobile d-none-desktop">\${song.artist}</span>
                         </div>
                     </td>
                     <td>\${song.artist}</td>
