@@ -1,0 +1,144 @@
+Zorify downloader server running at http://0.0.0.0:3000
+2026-06-26T03:09:09.590Z - Request: /
+Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive"
+}
+2026-06-26T03:09:20.368Z - Request: /Zorify.apk
+Headers: {
+  "host": "localhost:3000",
+  "connection": "keep-alive"
+}
+2026-06-26T03:11:03.607Z - Request: /
+Headers: {
+  "host": "localhost:3000",
+  "x-forwarded-host": "ais-dev-63htz2l2knf47xa34vzhv2-1067765608864.asia-southeast1.run.app",
+  "x-real-ip": "169.254.169.126",
+  "x-forwarded-for": "103.86.116.38, 169.254.169.126",
+  "x-forwarded-proto": "http",
+  "connection": "upgrade",
+  "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?1",
+  "sec-ch-ua-platform": "\"Android\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-ch-ua-arch": "\"\"",
+  "sec-ch-ua-platform-version": "\"16.0.0\"",
+  "sec-ch-ua-model": "\"SM-A346E\"",
+  "sec-ch-ua-bitness": "\"\"",
+  "sec-ch-ua-wow64": "?0",
+  "sec-ch-ua-full-version-list": "\"Google Chrome\";v=\"149.0.7827.197\", \"Chromium\";v=\"149.0.7827.197\", \"Not)A;Brand\";v=\"24.0.0.0\"",
+  "sec-fetch-site": "cross-site",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-user": "?1",
+  "sec-fetch-dest": "document",
+  "referer": "https://www.google.com/",
+  "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+  "priority": "u=0, i",
+  "x-cloud-trace-context": "67a85185e9749ee7fe0660d8db3f2bb0/10070078925693210392",
+  "cookie": "__SECURE-aistudio_auth_token=gZV3A1eS2gX81NL6a1Saaf0YMbEYtV0VnhyXP-ifPHU=",
+  "traceparent": "00-67a85185e9749ee7fe0660d8db3f2bb0-8bc01b6dea174f18-00",
+  "forwarded": "for=\"103.86.116.38\";proto=https"
+}
+2026-06-26T03:11:05.085Z - Request: /favicon.ico
+Headers: {
+  "host": "localhost:3000",
+  "x-forwarded-host": "ais-dev-63htz2l2knf47xa34vzhv2-1067765608864.asia-southeast1.run.app",
+  "x-real-ip": "169.254.169.126",
+  "x-forwarded-for": "103.86.116.38, 169.254.169.126",
+  "x-forwarded-proto": "http",
+  "connection": "upgrade",
+  "sec-ch-ua-platform": "\"Android\"",
+  "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
+  "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?1",
+  "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-mode": "no-cors",
+  "sec-fetch-dest": "image",
+  "referer": "https://ais-dev-63htz2l2knf47xa34vzhv2-1067765608864.asia-southeast1.run.app/",
+  "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+  "priority": "u=1, i",
+  "x-cloud-trace-context": "d76a4ca561ee7c5ffe0660d8db3f257a/11762668825708610696",
+  "sec-ch-ua-arch": "\"\"",
+  "sec-ch-ua-bitness": "\"\"",
+  "sec-ch-ua-model": "\"SM-A346E\"",
+  "sec-ch-ua-wow64": "?0",
+  "sec-ch-ua-platform-version": "\"16.0.0\"",
+  "sec-ch-ua-full-version-list": "\"Google Chrome\";v=\"149.0.7827.197\", \"Chromium\";v=\"149.0.7827.197\", \"Not)A;Brand\";v=\"24.0.0.0\"",
+  "cookie": "__SECURE-aistudio_auth_token=gZV3A1eS2gX81NL6a1Saaf0YMbEYtV0VnhyXP-ifPHU=",
+  "traceparent": "00-d76a4ca561ee7c5ffe0660d8db3f257a-a33d64f9c6ec4488-00",
+  "forwarded": "for=\"103.86.116.38\";proto=https"
+}
+2026-06-26T03:11:14.580Z - Request: /Zorify.apk
+Headers: {
+  "host": "localhost:3000",
+  "x-forwarded-host": "ais-dev-63htz2l2knf47xa34vzhv2-1067765608864.asia-southeast1.run.app",
+  "x-real-ip": "169.254.169.126",
+  "x-forwarded-for": "103.86.116.38, 169.254.169.126",
+  "x-forwarded-proto": "http",
+  "connection": "upgrade",
+  "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?1",
+  "sec-ch-ua-platform": "\"Android\"",
+  "upgrade-insecure-requests": "1",
+  "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "sec-ch-ua-arch": "\"\"",
+  "sec-ch-ua-platform-version": "\"16.0.0\"",
+  "sec-ch-ua-model": "\"SM-A346E\"",
+  "sec-ch-ua-bitness": "\"\"",
+  "sec-ch-ua-wow64": "?0",
+  "sec-ch-ua-full-version-list": "\"Google Chrome\";v=\"149.0.7827.197\", \"Chromium\";v=\"149.0.7827.197\", \"Not)A;Brand\";v=\"24.0.0.0\"",
+  "sec-fetch-site": "none",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-dest": "document",
+  "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+  "priority": "u=0, i",
+  "x-cloud-trace-context": "ea5d561708767ef5aaec9042926c4382/17155892627639778870;o=1",
+  "cookie": "__SECURE-aistudio_auth_token=gZV3A1eS2gX81NL6a1Saaf0YMbEYtV0VnhyXP-ifPHU=",
+  "traceparent": "00-ea5d561708767ef5aaec9042926c4382-ee15f972f3363e36-01",
+  "forwarded": "for=\"103.86.116.38\";proto=https"
+}
+2026-06-26T03:23:01.401Z - Request: /
+Headers: {
+  "host": "localhost:3000",
+  "x-forwarded-host": "localhost",
+  "x-real-ip": "127.0.0.1",
+  "x-forwarded-for": "127.0.0.1",
+  "x-forwarded-proto": "http",
+  "connection": "upgrade"
+}
+Starting server with PORT env: 8080, DEFAULT_APP_PORT env: 3000, resolved PORT: 8080
+node:events:497
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:8080
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1976:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 8080
+}
+
+Node.js v22.22.3
+Starting server with PORT env: 8080, DEFAULT_APP_PORT env: 3000, resolved PORT: 3000
+Zorify downloader server running at http://0.0.0.0:3000
+2026-06-27T07:45:33.870Z - Request: /
+Headers: {
+  "host": "localhost:3000",
+  "x-forwarded-host": "localhost",
+  "x-real-ip": "127.0.0.1",
+  "x-forwarded-for": "127.0.0.1",
+  "x-forwarded-proto": "http",
+  "connection": "upgrade"
+}

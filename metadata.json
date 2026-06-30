@@ -1,0 +1,6 @@
+{
+  "name": "Zorify",
+  "description": "Zorify - High Quality Music Player with RGB visualizer, real-time lyrics, offline mode, and cloud playlists.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
